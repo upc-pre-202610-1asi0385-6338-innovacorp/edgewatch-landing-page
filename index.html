@@ -247,6 +247,157 @@
           </div>
         </div>
       </section>
+      <!-- US47 · Plans -->
+      <section class="section section-alt" id="pricing" aria-labelledby="pricing-title">
+        <div class="container">
+          <header class="section-head">
+            <h2 id="pricing-title" data-i18n="pricing.title">Planes según tus equipos</h2>
+            <p data-i18n="pricing.lead">Facturación mensual en USD.</p>
+          </header>
+          <div class="plan-grid">
+            <article class="card plan">
+              <h3 data-i18n="plan.shop">Taller</h3>
+              <p class="price mono">$290<small data-i18n="plan.month">/ mes</small></p>
+              <ul class="check-list">
+                <li data-i18n="plan.shop.1">Hasta 2 equipos HVOF</li>
+                <li data-i18n="plan.shop.2">10 usuarios</li>
+                <li data-i18n="plan.shop.3">Reportes y certificados</li>
+              </ul>
+              <button
+                class="btn btn-secondary btn-block"
+                type="button"
+                data-plan="Taller"
+                data-i18n="plan.choose"
+              >
+                Elegir plan
+              </button>
+            </article>
+            <article class="card plan plan-featured">
+              <p class="badge" data-i18n="plan.recommended">Recomendado</p>
+              <h3 data-i18n="plan.plant">Planta</h3>
+              <p class="price mono">$690<small data-i18n="plan.month">/ mes</small></p>
+              <ul class="check-list">
+                <li data-i18n="plan.plant.1">Hasta 6 equipos HVOF</li>
+                <li data-i18n="plan.plant.2">30 usuarios</li>
+                <li data-i18n="plan.plant.3">Diagnóstico y casos similares</li>
+                <li data-i18n="plan.plant.4">Portal de clientes</li>
+              </ul>
+              <button
+                class="btn btn-primary btn-block"
+                type="button"
+                data-plan="Planta"
+                data-i18n="plan.choose"
+              >
+                Elegir plan
+              </button>
+            </article>
+            <article class="card plan">
+              <h3 data-i18n="plan.ent">Corporativo</h3>
+              <p class="price mono" data-i18n="plan.custom">A medida</p>
+              <ul class="check-list">
+                <li data-i18n="plan.ent.1">Equipos ilimitados</li>
+                <li data-i18n="plan.ent.2">Integración ERP / SSO</li>
+              </ul>
+              <button
+                class="btn btn-secondary btn-block"
+                type="button"
+                data-plan="Corporativo"
+                data-i18n="plan.choose"
+              >
+                Elegir plan
+              </button>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- US51 · Demo request -->
+      <section class="section" id="contact" aria-labelledby="contact-title">
+        <div class="container contact-grid">
+          <div>
+            <h2 id="contact-title" data-i18n="contact.title">Solicita una demo</h2>
+            <p class="lead" data-i18n="contact.lead">
+              Te mostramos EdgeWatch con datos de un taller HVOF real en 30 minutos.
+            </p>
+            <p class="muted" id="selected-plan" aria-live="polite"></p>
+          </div>
+          <form class="card form" id="demo-form" novalidate aria-labelledby="contact-title">
+            <div class="field">
+              <label for="df-name" data-i18n="form.name">Nombre y apellido *</label
+              ><input
+                id="df-name"
+                name="name"
+                autocomplete="name"
+                required
+                aria-describedby="df-name-err"
+              />
+              <p class="help error" id="df-name-err"></p>
+            </div>
+            <div class="field">
+              <label for="df-company" data-i18n="form.company">Empresa *</label
+              ><input
+                id="df-company"
+                name="company"
+                autocomplete="organization"
+                required
+                aria-describedby="df-company-err"
+              />
+              <p class="help error" id="df-company-err"></p>
+            </div>
+            <div class="field">
+              <label for="df-email" data-i18n="form.email">Correo corporativo *</label
+              ><input
+                id="df-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+                aria-describedby="df-email-err"
+              />
+              <p class="help error" id="df-email-err"></p>
+            </div>
+            <fieldset>
+              <legend data-i18n="form.type">Tipo de empresa *</legend>
+              <label
+                ><input type="radio" name="type" value="shop" checked />
+                <span data-i18n="form.shop">Taller de recubrimiento HVOF</span></label
+              >
+              <label
+                ><input type="radio" name="type" value="mine" />
+                <span data-i18n="form.mine">Minera · Asset Owner</span></label
+              >
+            </fieldset>
+            <button class="btn btn-primary btn-block" type="submit" data-i18n="cta.demo">
+              Solicitar demo
+            </button>
+            <p class="form-status" id="demo-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+
+      <!-- US54 · Newsletter -->
+      <section class="newsletter" aria-labelledby="nl-title">
+        <div class="container newsletter-inner">
+          <div>
+            <h2 id="nl-title" data-i18n="nl.title">Novedades de EdgeWatch</h2>
+            <p data-i18n="nl.lead">Casos de uso HVOF y nuevas funciones, una vez al mes.</p>
+          </div>
+          <form class="newsletter-form" id="newsletter-form" novalidate>
+            <label class="sr-only" for="nl-email" data-i18n="form.email"
+              >Correo corporativo *</label
+            >
+            <input
+              id="nl-email"
+              type="email"
+              placeholder="tu@empresa.com"
+              autocomplete="email"
+              aria-describedby="nl-status"
+            />
+            <button class="btn btn-primary" type="submit" data-i18n="nl.cta">Suscribirme</button>
+            <p class="form-status" id="nl-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
     </main>
     <footer class="site-footer">
       <div class="container footer-inner">

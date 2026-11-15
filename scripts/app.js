@@ -212,3 +212,29 @@ document.addEventListener('keydown', (e) => {
     menuToggle.focus();
   }
 });
+
+// ==========================================================
+// ACCESSIBLE TABS
+// ==========================================================
+$$('[data-tabs]').forEach((tabs) => {
+  const tabList = $$(":scope > .tab-list [role='tab']", tabs);
+  const select = (tab) => {
+    tabList.forEach((t) => {
+      const on = t === tab;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    tab.focus();
+  };
+  tabList.forEach((tab, i) => {
+    tab.addEventListener('click', () => select(tab));
+    tab.addEventListener('keydown', (e) => {
+      const map = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabList.length - 1 };
+      if (e.key in map) {
+        e.preventDefault();
+        select(tabList[(map[e.key] + tabList.length) % tabList.length]);
+      }
+    });
+  });
+});

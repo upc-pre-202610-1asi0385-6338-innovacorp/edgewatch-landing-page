@@ -60,7 +60,193 @@
       </div>
     </header>
     <main id="main">
-      <!-- Sections are added by each feature branch -->
+      <!-- US48 · Value proposition -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow" data-i18n="hero.eyebrow">Monitoreo HVOF en tiempo real</p>
+            <h1 id="hero-title" data-i18n="hero.title">Cada pieza recubierta, con su evidencia.</h1>
+            <p class="lead" data-i18n="hero.lead">
+              EdgeWatch conecta tus equipos HVOF para monitorear parámetros, diagnosticar
+              desviaciones y entregar a la minera la trazabilidad completa de cada componente.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#contact" data-i18n="cta.demo">Solicitar demo</a>
+              <a class="btn btn-ghost" href="#demo" data-i18n="cta.try"
+                >Probar la demo interactiva</a
+              >
+            </div>
+            <ul class="hero-stats">
+              <li>
+                <strong>5</strong
+                ><span data-i18n="hero.s1">parámetros HVOF monitoreados por sesión</span>
+              </li>
+              <li>
+                <strong>100 %</strong
+                ><span data-i18n="hero.s2">de las piezas con línea de tiempo trazable</span>
+              </li>
+              <li>
+                <strong>3</strong
+                ><span data-i18n="hero.s3">perfiles: operador, calidad y Asset Owner</span>
+              </li>
+            </ul>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="phone">
+              <div class="phone-top">
+                <span class="mono">OF-02548 · S-0192</span
+                ><span class="chip chip-info">EN SESIÓN</span>
+              </div>
+              <div class="banner banner-warn">
+                <strong>Presión de cámara 7.9 bar</strong><small>Fuera de rango · 1 min 40 s</small>
+              </div>
+              <ul class="mini-params">
+                <li>
+                  <span>Flujo de oxígeno</span><b class="mono">1 900 SCFH</b
+                  ><span class="chip chip-ok">NOMINAL</span>
+                </li>
+                <li>
+                  <span>Kerosene</span><b class="mono">6.0 GPH</b
+                  ><span class="chip chip-ok">NOMINAL</span>
+                </li>
+                <li>
+                  <span>Temp. sustrato</span><b class="mono">142 °C</b
+                  ><span class="chip chip-ok">NOMINAL</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- US49 · Core features -->
+      <section class="section" id="features" aria-labelledby="features-title">
+        <div class="container">
+          <header class="section-head">
+            <h2 id="features-title" data-i18n="features.title">
+              Todo el proceso HVOF en una sola plataforma
+            </h2>
+            <p data-i18n="features.lead">
+              Del rociado al certificado: monitoreo, diagnóstico, trazabilidad y evidencia.
+            </p>
+          </header>
+          <div class="feature-grid">
+            <article class="card feature">
+              <h3 data-i18n="f1.t">Monitoreo en tiempo real</h3>
+              <p data-i18n="f1.d">
+                Presión, O₂, kerosene, polvo y temperatura de cada sesión contra la banda nominal de
+                la receta.
+              </p>
+            </article>
+            <article class="card feature">
+              <h3 data-i18n="f2.t">Alertas y diagnóstico</h3>
+              <p data-i18n="f2.d">
+                Aviso al salir de rango, causas probables ordenadas y acción recomendada paso a
+                paso.
+              </p>
+            </article>
+            <article class="card feature">
+              <h3 data-i18n="f3.t">Trazabilidad por pieza</h3>
+              <p data-i18n="f3.d">
+                Busca por N/S, OF o WO y revisa la línea de tiempo completa desde la recepción hasta
+                el certificado.
+              </p>
+            </article>
+            <article class="card feature">
+              <h3 data-i18n="f4.t">Reportes y certificados</h3>
+              <p data-i18n="f4.d">
+                Genera evidencia técnica y certificados de aplicación listos para compartir con tu
+                cliente.
+              </p>
+            </article>
+            <article class="card feature">
+              <h3 data-i18n="f5.t">Portal del Asset Owner</h3>
+              <p data-i18n="f5.d">
+                La minera ve sus componentes, certificados y desempeño real frente al PCR.
+              </p>
+            </article>
+            <article class="card feature">
+              <h3 data-i18n="f6.t">Equipos y recetas</h3>
+              <p data-i18n="f6.d">
+                Gestiona tus equipos HVOF, recetas (PCR) y el historial de paradas por equipo.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- US50 · Benefits by segment -->
+      <section class="section section-alt" id="segments" aria-labelledby="segments-title">
+        <div class="container">
+          <header class="section-head">
+            <h2 id="segments-title" data-i18n="seg.title">
+              Hecho para quienes recubren y para quienes operan
+            </h2>
+          </header>
+          <div class="tabs" data-tabs>
+            <div class="tab-list" role="tablist" aria-label="Segmentos">
+              <button
+                role="tab"
+                id="tab-shop"
+                aria-controls="panel-shop"
+                aria-selected="true"
+                data-i18n="seg.shop"
+              >
+                Talleres HVOF
+              </button>
+              <button
+                role="tab"
+                id="tab-mine"
+                aria-controls="panel-mine"
+                aria-selected="false"
+                tabindex="-1"
+                data-i18n="seg.mine"
+              >
+                Mineras · Asset Owners
+              </button>
+            </div>
+            <div
+              class="tab-panel segment"
+              role="tabpanel"
+              id="panel-shop"
+              aria-labelledby="tab-shop"
+            >
+              <p class="kicker" data-i18n="seg.shop.who">
+                Operador técnico y responsable de calidad
+              </p>
+              <ul class="check-list">
+                <li data-i18n="seg.shop.b1">
+                  Menos reprocesos: detecta desviaciones durante el rociado, no después.
+                </li>
+                <li data-i18n="seg.shop.b2">
+                  Certificados y reportes en minutos, con datos reales de la sesión.
+                </li>
+                <li data-i18n="seg.shop.b3">Defiende tus garantías con evidencia ante reclamos.</li>
+              </ul>
+            </div>
+            <div
+              class="tab-panel segment segment-dark"
+              role="tabpanel"
+              id="panel-mine"
+              aria-labelledby="tab-mine"
+              hidden
+            >
+              <p class="kicker" data-i18n="seg.mine.who">Ingeniero de confiabilidad</p>
+              <ul class="check-list">
+                <li data-i18n="seg.mine.b1">
+                  Conoce el estado y la vida útil de cada componente recuperado.
+                </li>
+                <li data-i18n="seg.mine.b2">
+                  Compara proveedores con datos de desempeño, no con percepciones.
+                </li>
+                <li data-i18n="seg.mine.b3">
+                  Recibe avisos antes del fin de vida útil y solicita revisiones.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
     <footer class="site-footer">
       <div class="container footer-inner">

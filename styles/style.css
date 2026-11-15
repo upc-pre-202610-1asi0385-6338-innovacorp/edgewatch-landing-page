@@ -365,3 +365,217 @@ fieldset {
   gap: 8px;
   margin-top: 16px;
 }
+
+/* ==========================================================
+   HEADER (US52)
+   ========================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-height: var(--header-h);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text);
+}
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: var(--navy);
+}
+.brand-mark svg {
+  width: 20px;
+  fill: var(--amber);
+}
+.brand-name {
+  font: 600 1.25rem var(--font-title);
+}
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-left: auto;
+}
+.main-nav ul {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.main-nav a:not(.btn) {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+.main-nav a:not(.btn):hover {
+  color: var(--teal-dark);
+}
+.lang-switch {
+  display: flex;
+  border: 1px solid var(--border-strong);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.lang-btn {
+  border: 0;
+  background: none;
+  padding: 6px 12px;
+  font: 600 0.75rem var(--font-body);
+  cursor: pointer;
+  color: var(--text-2);
+}
+.lang-btn.is-active {
+  background: var(--navy);
+  color: #fff;
+}
+.menu-toggle {
+  display: none;
+  margin-left: auto;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  padding: 12px;
+}
+.menu-toggle span {
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+}
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+.site-footer {
+  background: var(--navy-dark);
+  color: #b9c7db;
+  padding: 32px 0;
+}
+.site-footer .brand-name {
+  color: #fff;
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.footer-inner p {
+  margin: 0;
+  font-size: 0.8125rem;
+}
+
+/* ==========================================================
+   RESPONSIVE: TABLET AND PHONE (US53) · ALWAYS AT THE END
+   ========================================================== */
+@media (max-width: 1024px) {
+  .feature-grid,
+  .plan-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .demo-grid,
+  .contact-grid,
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 768px) {
+  :root {
+    --header-h: 64px;
+  }
+  .menu-toggle {
+    display: flex;
+  }
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    background: var(--surface);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+    gap: 16px;
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  }
+  .main-nav.is-open {
+    display: flex;
+  }
+  .main-nav ul {
+    flex-direction: column;
+    gap: 0;
+  }
+  .main-nav ul a {
+    display: block;
+    padding: 14px 4px;
+    font-size: 1rem;
+  }
+  .lang-switch {
+    align-self: flex-start;
+  }
+  .hero {
+    padding: 48px 0;
+  }
+  .hero-stats {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .hero-actions .btn {
+    width: 100%;
+  }
+  .section {
+    padding: 56px 0;
+  }
+  .feature-grid,
+  .plan-grid {
+    grid-template-columns: 1fr;
+  }
+  .filters {
+    grid-template-columns: auto 1fr;
+  }
+  .card {
+    padding: 16px;
+  }
+  .params {
+    font-size: 0.75rem;
+  }
+}
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .print-target,
+  .print-target * {
+    visibility: visible;
+  }
+  .print-target {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    box-shadow: none;
+  }
+}

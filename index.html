@@ -20,9 +20,54 @@
   </head>
   <body>
     <a class="skip-link" href="#main" data-i18n="skip">Saltar al contenido</a>
+    <!-- US52 · Sticky header / US55 · language switch -->
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <a class="brand" href="#top" aria-label="EdgeWatch, ir al inicio">
+          <span class="brand-mark" aria-hidden="true"
+            ><svg viewBox="0 0 24 24">
+              <path
+                d="M12 4a10 10 0 00-8.66 15h17.32A10 10 0 0012 4zm1 10.73V8h-2v6.73A2 2 0 1013 14.73z"
+              /></svg
+          ></span>
+          <span class="brand-name">EdgeWatch</span>
+        </a>
+        <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
+          <ul>
+            <li><a href="#features" data-i18n="nav.features">Funciones</a></li>
+            <li><a href="#segments" data-i18n="nav.benefits">Beneficios</a></li>
+            <li><a href="#demo" data-i18n="nav.demo">Pruébalo</a></li>
+            <li><a href="#pricing" data-i18n="nav.pricing">Planes</a></li>
+            <li><a href="#contact" data-i18n="nav.contact">Contacto</a></li>
+          </ul>
+          <div class="lang-switch" role="group" aria-label="Idioma">
+            <button type="button" class="lang-btn is-active" data-lang="es" aria-pressed="true">
+              ES
+            </button>
+            <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <a class="btn btn-primary" href="#contact" data-i18n="cta.demo">Solicitar demo</a>
+        </nav>
+        <button
+          type="button"
+          class="menu-toggle"
+          aria-expanded="false"
+          aria-controls="main-nav"
+          aria-label="Abrir menú"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
     <main id="main">
       <!-- Sections are added by each feature branch -->
     </main>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span class="brand-name">EdgeWatch</span>
+        <p data-i18n="footer.copy">© 2026 InnovaCorp · EdgeWatch. Datos de la demo simulados.</p>
+      </div>
+    </footer>
     <div class="toast-region" id="toasts" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

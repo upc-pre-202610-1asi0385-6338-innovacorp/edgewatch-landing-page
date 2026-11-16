@@ -247,6 +247,171 @@
           </div>
         </div>
       </section>
+      <!-- Core user stories · interactive simulated demo -->
+      <section class="section" id="demo" aria-labelledby="demo-title">
+        <div class="container">
+          <header class="section-head">
+            <h2 id="demo-title" data-i18n="demo.title">Pruébalo: demo interactiva</h2>
+            <p data-i18n="demo.lead">
+              Datos simulados en memoria. Al recargar la página, la demo vuelve a su estado inicial.
+            </p>
+          </header>
+          <div class="tabs demo" data-tabs>
+            <div class="tab-list" role="tablist" aria-label="Perfil de la demo">
+              <button
+                role="tab"
+                id="tab-op"
+                aria-controls="panel-op"
+                aria-selected="true"
+                data-i18n="demo.op"
+              >
+                Operador HVOF
+              </button>
+            </div>
+
+            <!-- OPERATOR -->
+            <div class="tab-panel" role="tabpanel" id="panel-op" aria-labelledby="tab-op">
+              <div class="demo-grid">
+                <div class="demo-col">
+                  <article class="card" id="shift-summary" aria-labelledby="shift-title">
+                    <h3 id="shift-title">Resumen del turno <small class="hint">US06</small></h3>
+                    <p class="muted">Manuel Torres · JP-5000 · Cabina HVOF 2</p>
+                    <div class="stats">
+                      <div><b class="mono" id="stat-sessions">2</b><span>Sesiones</span></div>
+                      <div>
+                        <b class="mono warn-text" id="stat-alerts">0</b><span>Alertas</span>
+                      </div>
+                      <div><b class="mono" id="stat-status">DISPONIBLE</b><span>Equipo</span></div>
+                    </div>
+                  </article>
+
+                  <form
+                    class="card form"
+                    id="session-form"
+                    novalidate
+                    aria-labelledby="session-form-title"
+                  >
+                    <h3 id="session-form-title">Nueva sesión <small class="hint">US01</small></h3>
+                    <div class="field">
+                      <label for="of-input">Orden de fabricación (OF) *</label>
+                      <input
+                        id="of-input"
+                        name="of"
+                        class="mono"
+                        placeholder="OF-02548"
+                        autocomplete="off"
+                        aria-describedby="of-help"
+                        required
+                      />
+                      <p class="help" id="of-help" aria-live="polite">
+                        Prueba con OF-02548 u OF-02551.
+                      </p>
+                    </div>
+                    <div class="field">
+                      <label for="wo-input">Orden de trabajo (WO) *</label>
+                      <input id="wo-input" name="wo" class="mono" placeholder="WO-01582" required />
+                    </div>
+                    <div class="field">
+                      <label for="component-input">Componente *</label>
+                      <select id="component-input" name="component" required>
+                        <option value="">Selecciona un componente</option>
+                        <option value="EB-7802">Eje de bomba · N/S EB-7802</option>
+                        <option value="VS-1120">Vástago · N/S VS-1120</option>
+                      </select>
+                    </div>
+                    <button class="btn btn-primary btn-block" type="submit">Continuar</button>
+                  </form>
+
+                  <article class="card" id="confirm-card" hidden aria-labelledby="confirm-title">
+                    <h3 id="confirm-title">Confirmar inicio <small class="hint">US02</small></h3>
+                    <dl class="kv" id="confirm-summary"></dl>
+                    <div class="actions">
+                      <button class="btn btn-primary" type="button" id="start-btn">
+                        Iniciar monitoreo
+                      </button>
+                      <button class="btn btn-secondary" type="button" id="edit-btn">
+                        Corregir datos
+                      </button>
+                    </div>
+                  </article>
+                </div>
+
+                <div class="demo-col">
+                  <article class="card" id="live-card" aria-labelledby="live-title">
+                    <div class="card-head">
+                      <h3 id="live-title">
+                        Sesión en vivo <small class="hint">US03 · US04 · US05</small>
+                      </h3>
+                      <span class="chip chip-neutral" id="session-chip">SIN SESIÓN</span>
+                    </div>
+                    <p class="muted mono" id="session-meta">
+                      Inicia una sesión para ver los parámetros.
+                    </p>
+                    <table class="params" aria-describedby="live-title">
+                      <thead>
+                        <tr>
+                          <th scope="col">Parámetro</th>
+                          <th scope="col">Valor</th>
+                          <th scope="col">Rango PCR</th>
+                          <th scope="col">Estado</th>
+                        </tr>
+                      </thead>
+                      <tbody id="params-body"></tbody>
+                    </table>
+                    <div class="trend">
+                      <div class="trend-head">
+                        <label for="trend-param">Tendencia de</label>
+                        <select id="trend-param"></select>
+                      </div>
+                      <svg
+                        id="trend-chart"
+                        viewBox="0 0 320 120"
+                        role="img"
+                        aria-label="Tendencia del parámetro sobre la banda nominal"
+                      ></svg>
+                      <p class="legend">
+                        <span class="swatch"></span> Banda nominal de la receta · punto rojo = fuera
+                        de rango
+                      </p>
+                    </div>
+                    <div class="actions">
+                      <button class="btn btn-secondary" type="button" id="simulate-btn" disabled>
+                        Simular desviación
+                      </button>
+                      <button class="btn btn-secondary" type="button" id="finish-btn" disabled>
+                        Pausar / finalizar
+                      </button>
+                    </div>
+                    <form class="inline-form" id="finish-form" hidden novalidate>
+                      <fieldset>
+                        <legend>Acción</legend>
+                        <label
+                          ><input type="radio" name="finishAction" value="pause" /> Pausar</label
+                        >
+                        <label
+                          ><input type="radio" name="finishAction" value="finish" checked />
+                          Finalizar</label
+                        >
+                      </fieldset>
+                      <div class="field">
+                        <label for="finish-reason">Motivo *</label>
+                        <select id="finish-reason" required aria-describedby="finish-help">
+                          <option value="">Selecciona un motivo</option>
+                          <option>Rociado completado</option>
+                          <option>Cambio de boquilla</option>
+                          <option>Falla de equipo</option>
+                        </select>
+                        <p class="help" id="finish-help"></p>
+                      </div>
+                      <button class="btn btn-primary" type="submit">Confirmar</button>
+                    </form>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <!-- US47 · Plans -->
       <section class="section section-alt" id="pricing" aria-labelledby="pricing-title">
         <div class="container">

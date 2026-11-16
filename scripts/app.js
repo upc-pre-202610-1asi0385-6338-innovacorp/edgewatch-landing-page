@@ -734,3 +734,77 @@ $('#finish-form').addEventListener('submit', (e) => {
 });
 
 renderShift();
+
+// ==========================================================
+// DEMO: OPERATOR ALERTS AND ACTIONS (US08-US18)
+// ==========================================================
+/* ---------- Operator: US08 · US09 · US10 · US13 · US14 · US15 · US16 · US18 ---------- */
+$('#simulate-btn').addEventListener('click', () => {
+  state.deviation = true;
+});
+function raiseAlert() {
+  state.alertOpen = true;
+  state.alerts += 1;
+  showToast('ALERTA · Presión de cámara 7.9 bar fuera de rango (6.8 – 7.6) · ' + state.session.of);
+  if ('Notification' in window && Notification.permission === 'granted')
+    new Notification('EdgeWatch · ALERTA', { body: 'Presión de cámara fuera de rango' });
+  $('#alert-text').innerHTML =
+    `<strong>Presión de cámara fuera de rango.</strong> Valor 7.9 bar · Rango PCR ${state.pressureRange.join(' – ')} bar · Tolerancia ${state.toleranceSeconds} s. Equipo ${state.session.equipment}, operador Manuel T.`;
+  $('#alert-chip').outerHTML = `<span class="chip chip-warn" id="alert-chip">ALERTA</span>`;
+  $('#alert-card').hidden = false;
+}
+$('#review-btn').addEventListener('click', () => {
+  $('#alert-chip').outerHTML = `<span class="chip chip-ok" id="alert-chip">REVISADA</span>`;
+  showToast('Alerta AL-0417 marcada como revisada.', 'ok');
+});
+$('#diagnosis-btn').addEventListener('click', () => {
+  $('#causes').innerHTML = demoData.causes
+    .map(
+      ([c, p], i) =>
+        `<li><div class="bar-label"><span>${i + 1}. ${c}</span><span class="mono">${p} %</span></div><div class="track"><span style="width:${p}%"></span></div></li>`,
+    )
+    .join('');
+  $('#diagnosis-card').hidden = false;
+  $('#action-form').hidden = false;
+  $('#diagnosis-card').scrollIntoView({ block: 'nearest' });
+});
+$('#notify-btn').addEventListener('click', () =>
+  showToast(
+    'Aviso enviado a mantenimiento (Jorge R., técnico de turno) con el diagnóstico de AL-0417.',
+    'ok',
+  ),
+);
+
+$('#action-photo').addEventListener('change', (e) => {
+  const file = e.target.files[0],
+    help = $('#photo-help'),
+    img = $('#photo-preview');
+  if (!file) return;
+  if (file.size > 5 * 1024 * 1024) {
+    setFieldState(e.target, help, 'La foto supera 5 MB. Elige una imagen más liviana.');
+    e.target.value = '';
+    img.hidden = true;
+    return;
+  }
+  setFieldState(e.target, help, `${file.name} adjunta`, true);
+  img.src = URL.createObjectURL(file);
+  img.hidden = false;
+});
+$('#action-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const cause = $('#action-cause');
+  if (!cause.value) {
+    setFieldState(cause, $('#cause-help'), 'Selecciona la causa confirmada.');
+    cause.focus();
+    return;
+  }
+  setFieldState(cause, $('#cause-help'), '');
+  state.deviation = false;
+  $('#alert-chip').outerHTML = `<span class="chip chip-ok" id="alert-chip">ATENDIDA</span>`;
+  showToast(
+    `Acción registrada: ${$('#action-taken').value} · ${cause.value}${$('#action-stopped').checked ? ' · sesión detenida' : ''}. Supervisor notificado.`,
+    'ok',
+  );
+  e.target.hidden = true;
+  $('#diagnosis-card').hidden = true;
+});

@@ -406,6 +406,82 @@
                       <button class="btn btn-primary" type="submit">Confirmar</button>
                     </form>
                   </article>
+                  <article class="card" id="alert-card" hidden aria-labelledby="alert-title">
+                    <div class="card-head">
+                      <h3 id="alert-title">
+                        Alerta AL-0417 <small class="hint">US08 · US09 · US10</small>
+                      </h3>
+                      <span class="chip chip-warn" id="alert-chip">ALERTA</span>
+                    </div>
+                    <p id="alert-text"></p>
+                    <div class="actions">
+                      <button class="btn btn-primary" type="button" id="diagnosis-btn">
+                        Ver diagnóstico
+                      </button>
+                      <button class="btn btn-secondary" type="button" id="review-btn">
+                        Marcar como revisada
+                      </button>
+                    </div>
+                  </article>
+
+                  <article class="card" id="diagnosis-card" hidden aria-labelledby="diag-title">
+                    <h3 id="diag-title">
+                      Diagnóstico <small class="hint">US13 · US14 · US18</small>
+                    </h3>
+                    <ol class="bars" id="causes"></ol>
+                    <h4>Acción recomendada <span class="chip chip-err">CRÍTICA</span></h4>
+                    <ol class="steps">
+                      <li>Detener alimentación de polvo</li>
+                      <li>Inspeccionar y limpiar boquilla</li>
+                      <li>Verificar presión antes de reanudar</li>
+                    </ol>
+                    <div class="actions">
+                      <button class="btn btn-secondary" type="button" id="notify-btn">
+                        Notificar a mantenimiento
+                      </button>
+                    </div>
+                  </article>
+
+                  <form
+                    class="card form"
+                    id="action-form"
+                    hidden
+                    novalidate
+                    aria-labelledby="action-title"
+                  >
+                    <h3 id="action-title">
+                      Registrar acción <small class="hint">US15 · US16</small>
+                    </h3>
+                    <div class="field">
+                      <label for="action-taken">Acción tomada *</label
+                      ><input id="action-taken" value="Limpieza de boquilla" required />
+                    </div>
+                    <div class="field">
+                      <label for="action-cause">Causa confirmada *</label>
+                      <select id="action-cause" required aria-describedby="cause-help">
+                        <option value="">Selecciona una causa</option>
+                        <option>Obstrucción parcial de boquilla</option>
+                        <option>Variación en suministro de O₂</option>
+                        <option>Desgaste del inyector de polvo</option>
+                      </select>
+                      <p class="help" id="cause-help"></p>
+                    </div>
+                    <label class="check"
+                      ><input type="checkbox" id="action-stopped" /> ¿Se detuvo la sesión?</label
+                    >
+                    <div class="field">
+                      <label for="action-photo">Foto de evidencia (JPG/PNG, máx. 5 MB)</label
+                      ><input
+                        type="file"
+                        id="action-photo"
+                        accept="image/png,image/jpeg"
+                        aria-describedby="photo-help"
+                      />
+                      <p class="help" id="photo-help"></p>
+                      <img id="photo-preview" alt="Vista previa de la foto de evidencia" hidden />
+                    </div>
+                    <button class="btn btn-primary btn-block" type="submit">Confirmar</button>
+                  </form>
                 </div>
               </div>
             </div>

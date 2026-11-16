@@ -797,6 +797,192 @@ fieldset {
 }
 
 /* ==========================================================
+   TOASTS
+   ========================================================== */
+.toast-region {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  display: grid;
+  gap: 8px;
+  z-index: 80;
+  max-width: min(380px, calc(100% - 32px));
+}
+.toast {
+  background: var(--navy-dark);
+  color: #fff;
+  padding: 14px 16px;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  font-size: 0.875rem;
+  border-left: 4px solid var(--amber);
+}
+.toast.ok {
+  border-left-color: #6fd08c;
+}
+
+/* ==========================================================
+   DEMO: LAYOUT AND OPERATOR SESSION
+   ========================================================== */
+.demo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.demo-col {
+  display: grid;
+  gap: 24px;
+}
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.stats div {
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 12px;
+}
+.stats b {
+  display: block;
+  font-size: 1.125rem;
+}
+.stats span {
+  font-size: 0.75rem;
+  color: var(--text-2);
+}
+.kv {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 16px;
+  margin: 0;
+}
+.kv dt {
+  color: var(--text-2);
+  font-size: 0.8125rem;
+}
+.kv dd {
+  margin: 0;
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+}
+.params {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+  margin-top: 12px;
+}
+.params th {
+  text-align: left;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-2);
+  background: var(--neutral-bg);
+  padding: 8px;
+}
+.params td,
+.params tbody th {
+  padding: 10px 8px;
+  border-top: 1px solid var(--border);
+}
+.params tbody th {
+  text-align: left;
+  font: 600 0.8125rem var(--font-body);
+  color: var(--text);
+  background: none;
+  text-transform: none;
+  letter-spacing: 0;
+}
+#photo-preview {
+  max-height: 120px;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+.params tr.row-warn td {
+  background: var(--warn-bg);
+}
+.trend {
+  margin-top: 16px;
+}
+.trend-head {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.trend-head select {
+  width: auto;
+  min-height: 40px;
+}
+.trend svg,
+#history-chart {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-top: 8px;
+}
+.legend {
+  font-size: 0.75rem;
+  color: var(--text-2);
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-top: 6px;
+}
+.swatch {
+  width: 14px;
+  height: 10px;
+  background: var(--band);
+  border: 1px solid var(--ok);
+  display: inline-block;
+}
+.inline-form {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+}
+.list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid var(--border);
+}
+.list li:first-child {
+  border-top: 0;
+}
+.list .meta {
+  font-size: 0.75rem;
+  color: var(--text-2);
+  display: block;
+}
+.list button.link {
+  background: none;
+  border: 0;
+  color: var(--teal-dark);
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+/* ==========================================================
    RESPONSIVE: TABLET AND PHONE (US53) · ALWAYS AT THE END
    ========================================================== */
 @media (max-width: 1024px) {

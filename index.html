@@ -1,0 +1,1002 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EdgeWatch · Monitoreo, trazabilidad y diagnóstico HVOF</title>
+    <meta
+      name="description"
+      content="EdgeWatch conecta tus equipos HVOF para monitorear parámetros, diagnosticar desviaciones y entregar trazabilidad de cada componente recubierto."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Poppins:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/style.css" />
+    <script defer src="scripts/app.js"></script>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main" data-i18n="skip">Saltar al contenido</a>
+    <!-- US52 · Sticky header / US55 · language switch -->
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <a class="brand" href="#top" aria-label="EdgeWatch, ir al inicio">
+          <span class="brand-mark" aria-hidden="true"
+            ><svg viewBox="0 0 24 24">
+              <path
+                d="M12 4a10 10 0 00-8.66 15h17.32A10 10 0 0012 4zm1 10.73V8h-2v6.73A2 2 0 1013 14.73z"
+              /></svg
+          ></span>
+          <span class="brand-name">EdgeWatch</span>
+        </a>
+        <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
+          <ul>
+            <li><a href="#features" data-i18n="nav.features">Funciones</a></li>
+            <li><a href="#segments" data-i18n="nav.benefits">Beneficios</a></li>
+            <li><a href="#demo" data-i18n="nav.demo">Pruébalo</a></li>
+            <li><a href="#pricing" data-i18n="nav.pricing">Planes</a></li>
+            <li><a href="#contact" data-i18n="nav.contact">Contacto</a></li>
+          </ul>
+          <div class="lang-switch" role="group" aria-label="Idioma">
+            <button type="button" class="lang-btn is-active" data-lang="es" aria-pressed="true">
+              ES
+            </button>
+            <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <a class="btn btn-primary" href="#contact" data-i18n="cta.demo">Solicitar demo</a>
+        </nav>
+        <button
+          type="button"
+          class="menu-toggle"
+          aria-expanded="false"
+          aria-controls="main-nav"
+          aria-label="Abrir menú"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+    <main id="main">
+      <!-- US48 · Value proposition -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow" data-i18n="hero.eyebrow">Monitoreo HVOF en tiempo real</p>
+            <h1 id="hero-title" data-i18n="hero.title">Cada pieza recubierta, con su evidencia.</h1>
+            <p class="lead" data-i18n="hero.lead">
+              EdgeWatch conecta tus equipos HVOF para monitorear parámetros, diagnosticar
+              desviaciones y entregar a la minera la trazabilidad completa de cada componente.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#contact" data-i18n="cta.demo">Solicitar demo</a>
+              <a class="btn btn-ghost" href="#demo" data-i18n="cta.try"
+                >Probar la demo interactiva</a
+              >
+            </div>
+            <ul class="hero-stats">
+              <li>
+                <strong>5</strong
+                ><span data-i18n="hero.s1">parámetros HVOF monitoreados por sesión</span>
+              </li>
+              <li>
+                <strong>100 %</strong
+                ><span data-i18n="hero.s2">de las piezas con línea de tiempo trazable</span>
+              </li>
+              <li>
+                <strong>3</strong
+                ><span data-i18n="hero.s3">perfiles: operador, calidad y Asset Owner</span>
+              </li>
+            </ul>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="phone">
+              <div class="phone-top">
+                <span class="mono">OF-02548 · S-0192</span
+                ><span class="chip chip-info">EN SESIÓN</span>
+              </div>
+              <div class="banner banner-warn">
+                <strong>Presión de cámara 7.9 bar</strong><small>Fuera de rango · 1 min 40 s</small>
+              </div>
+              <ul class="mini-params">
+                <li>
+                  <span>Flujo de oxígeno</span><b class="mono">1 900 SCFH</b
+                  ><span class="chip chip-ok">NOMINAL</span>
+                </li>
+                <li>
+                  <span>Kerosene</span><b class="mono">6.0 GPH</b
+                  ><span class="chip chip-ok">NOMINAL</span>
+                </li>
+                <li>
+                  <span>Temp. sustrato</span><b class="mono">142 °C</b
+                  ><span class="chip chip-ok">NOMINAL</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- US49 · Core features -->
+      <section class="section" id="features" aria-labelledby="features-title">
+        <div class="container">
+          <header class="section-head">
+            <h2 id="features-title" data-i18n="features.title">
+              Todo el proceso HVOF en una sola plataforma
+            </h2>
+            <p data-i18n="features.lead">
+              Del rociado al certificado: monitoreo, diagnóstico, trazabilidad y evidencia.
+            </p>
+          </header>
+          <div class="feature-grid">
+            <article class="card feature">
+              <h3 data-i18n="f1.t">Monitoreo en tiempo real</h3>
+              <p data-i18n="f1.d">
+                Presión, O₂, kerosene, polvo y temperatura de cada sesión contra la banda nominal de
+                la receta.
+              </p>
+            </article>
+            <article class="card feature">
+              <h3 data-i18n="f2.t">Alertas y diagnóstico</h3>
+              <p data-i18n="f2.d">
+                Aviso al salir de rango, causas probables ordenadas y acción recomendada paso a
+                paso.
+              </p>
+            </article>
+            <article class="card feature">
+              <h3 data-i18n="f3.t">Trazabilidad por pieza</h3>
+              <p data-i18n="f3.d">
+                Busca por N/S, OF o WO y revisa la línea de tiempo completa desde la recepción hasta
+                el certificado.
+              </p>
+            </article>
+            <article class="card feature">
+              <h3 data-i18n="f4.t">Reportes y certificados</h3>
+              <p data-i18n="f4.d">
+                Genera evidencia técnica y certificados de aplicación listos para compartir con tu
+                cliente.
+              </p>
+            </article>
+            <article class="card feature">
+              <h3 data-i18n="f5.t">Portal del Asset Owner</h3>
+              <p data-i18n="f5.d">
+                La minera ve sus componentes, certificados y desempeño real frente al PCR.
+              </p>
+            </article>
+            <article class="card feature">
+              <h3 data-i18n="f6.t">Equipos y recetas</h3>
+              <p data-i18n="f6.d">
+                Gestiona tus equipos HVOF, recetas (PCR) y el historial de paradas por equipo.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- US50 · Benefits by segment -->
+      <section class="section section-alt" id="segments" aria-labelledby="segments-title">
+        <div class="container">
+          <header class="section-head">
+            <h2 id="segments-title" data-i18n="seg.title">
+              Hecho para quienes recubren y para quienes operan
+            </h2>
+          </header>
+          <div class="tabs" data-tabs>
+            <div class="tab-list" role="tablist" aria-label="Segmentos">
+              <button
+                role="tab"
+                id="tab-shop"
+                aria-controls="panel-shop"
+                aria-selected="true"
+                data-i18n="seg.shop"
+              >
+                Talleres HVOF
+              </button>
+              <button
+                role="tab"
+                id="tab-mine"
+                aria-controls="panel-mine"
+                aria-selected="false"
+                tabindex="-1"
+                data-i18n="seg.mine"
+              >
+                Mineras · Asset Owners
+              </button>
+            </div>
+            <div
+              class="tab-panel segment"
+              role="tabpanel"
+              id="panel-shop"
+              aria-labelledby="tab-shop"
+            >
+              <p class="kicker" data-i18n="seg.shop.who">
+                Operador técnico y responsable de calidad
+              </p>
+              <ul class="check-list">
+                <li data-i18n="seg.shop.b1">
+                  Menos reprocesos: detecta desviaciones durante el rociado, no después.
+                </li>
+                <li data-i18n="seg.shop.b2">
+                  Certificados y reportes en minutos, con datos reales de la sesión.
+                </li>
+                <li data-i18n="seg.shop.b3">Defiende tus garantías con evidencia ante reclamos.</li>
+              </ul>
+            </div>
+            <div
+              class="tab-panel segment segment-dark"
+              role="tabpanel"
+              id="panel-mine"
+              aria-labelledby="tab-mine"
+              hidden
+            >
+              <p class="kicker" data-i18n="seg.mine.who">Ingeniero de confiabilidad</p>
+              <ul class="check-list">
+                <li data-i18n="seg.mine.b1">
+                  Conoce el estado y la vida útil de cada componente recuperado.
+                </li>
+                <li data-i18n="seg.mine.b2">
+                  Compara proveedores con datos de desempeño, no con percepciones.
+                </li>
+                <li data-i18n="seg.mine.b3">
+                  Recibe avisos antes del fin de vida útil y solicita revisiones.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Core user stories · interactive simulated demo -->
+      <section class="section" id="demo" aria-labelledby="demo-title">
+        <div class="container">
+          <header class="section-head">
+            <h2 id="demo-title" data-i18n="demo.title">Pruébalo: demo interactiva</h2>
+            <p data-i18n="demo.lead">
+              Datos simulados en memoria. Al recargar la página, la demo vuelve a su estado inicial.
+            </p>
+          </header>
+          <div class="tabs demo" data-tabs>
+            <div class="tab-list" role="tablist" aria-label="Perfil de la demo">
+              <button
+                role="tab"
+                id="tab-op"
+                aria-controls="panel-op"
+                aria-selected="true"
+                data-i18n="demo.op"
+              >
+                Operador HVOF
+              </button>
+              <button
+                role="tab"
+                id="tab-qa"
+                aria-controls="panel-qa"
+                aria-selected="false"
+                tabindex="-1"
+                data-i18n="demo.qa"
+              >
+                Calidad
+              </button>
+              <button
+                role="tab"
+                id="tab-ao"
+                aria-controls="panel-ao"
+                aria-selected="false"
+                tabindex="-1"
+                data-i18n="demo.ao"
+              >
+                Asset Owner
+              </button>
+            </div>
+
+            <!-- OPERATOR -->
+            <div class="tab-panel" role="tabpanel" id="panel-op" aria-labelledby="tab-op">
+              <div class="demo-grid">
+                <div class="demo-col">
+                  <article class="card" id="shift-summary" aria-labelledby="shift-title">
+                    <h3 id="shift-title">Resumen del turno <small class="hint">US06</small></h3>
+                    <p class="muted">Manuel Torres · JP-5000 · Cabina HVOF 2</p>
+                    <div class="stats">
+                      <div><b class="mono" id="stat-sessions">2</b><span>Sesiones</span></div>
+                      <div>
+                        <b class="mono warn-text" id="stat-alerts">0</b><span>Alertas</span>
+                      </div>
+                      <div><b class="mono" id="stat-status">DISPONIBLE</b><span>Equipo</span></div>
+                    </div>
+                  </article>
+
+                  <form
+                    class="card form"
+                    id="session-form"
+                    novalidate
+                    aria-labelledby="session-form-title"
+                  >
+                    <h3 id="session-form-title">Nueva sesión <small class="hint">US01</small></h3>
+                    <div class="field">
+                      <label for="of-input">Orden de fabricación (OF) *</label>
+                      <input
+                        id="of-input"
+                        name="of"
+                        class="mono"
+                        placeholder="OF-02548"
+                        autocomplete="off"
+                        aria-describedby="of-help"
+                        required
+                      />
+                      <p class="help" id="of-help" aria-live="polite">
+                        Prueba con OF-02548 u OF-02551.
+                      </p>
+                    </div>
+                    <div class="field">
+                      <label for="wo-input">Orden de trabajo (WO) *</label>
+                      <input id="wo-input" name="wo" class="mono" placeholder="WO-01582" required />
+                    </div>
+                    <div class="field">
+                      <label for="component-input">Componente *</label>
+                      <select id="component-input" name="component" required>
+                        <option value="">Selecciona un componente</option>
+                        <option value="EB-7802">Eje de bomba · N/S EB-7802</option>
+                        <option value="VS-1120">Vástago · N/S VS-1120</option>
+                      </select>
+                    </div>
+                    <button class="btn btn-primary btn-block" type="submit">Continuar</button>
+                  </form>
+
+                  <article class="card" id="confirm-card" hidden aria-labelledby="confirm-title">
+                    <h3 id="confirm-title">Confirmar inicio <small class="hint">US02</small></h3>
+                    <dl class="kv" id="confirm-summary"></dl>
+                    <div class="actions">
+                      <button class="btn btn-primary" type="button" id="start-btn">
+                        Iniciar monitoreo
+                      </button>
+                      <button class="btn btn-secondary" type="button" id="edit-btn">
+                        Corregir datos
+                      </button>
+                    </div>
+                  </article>
+                </div>
+
+                <div class="demo-col">
+                  <article class="card" id="live-card" aria-labelledby="live-title">
+                    <div class="card-head">
+                      <h3 id="live-title">
+                        Sesión en vivo <small class="hint">US03 · US04 · US05</small>
+                      </h3>
+                      <span class="chip chip-neutral" id="session-chip">SIN SESIÓN</span>
+                    </div>
+                    <p class="muted mono" id="session-meta">
+                      Inicia una sesión para ver los parámetros.
+                    </p>
+                    <table class="params" aria-describedby="live-title">
+                      <thead>
+                        <tr>
+                          <th scope="col">Parámetro</th>
+                          <th scope="col">Valor</th>
+                          <th scope="col">Rango PCR</th>
+                          <th scope="col">Estado</th>
+                        </tr>
+                      </thead>
+                      <tbody id="params-body"></tbody>
+                    </table>
+                    <div class="trend">
+                      <div class="trend-head">
+                        <label for="trend-param">Tendencia de</label>
+                        <select id="trend-param"></select>
+                      </div>
+                      <svg
+                        id="trend-chart"
+                        viewBox="0 0 320 120"
+                        role="img"
+                        aria-label="Tendencia del parámetro sobre la banda nominal"
+                      ></svg>
+                      <p class="legend">
+                        <span class="swatch"></span> Banda nominal de la receta · punto rojo = fuera
+                        de rango
+                      </p>
+                    </div>
+                    <div class="actions">
+                      <button class="btn btn-secondary" type="button" id="simulate-btn" disabled>
+                        Simular desviación
+                      </button>
+                      <button class="btn btn-secondary" type="button" id="finish-btn" disabled>
+                        Pausar / finalizar
+                      </button>
+                    </div>
+                    <form class="inline-form" id="finish-form" hidden novalidate>
+                      <fieldset>
+                        <legend>Acción</legend>
+                        <label
+                          ><input type="radio" name="finishAction" value="pause" /> Pausar</label
+                        >
+                        <label
+                          ><input type="radio" name="finishAction" value="finish" checked />
+                          Finalizar</label
+                        >
+                      </fieldset>
+                      <div class="field">
+                        <label for="finish-reason">Motivo *</label>
+                        <select id="finish-reason" required aria-describedby="finish-help">
+                          <option value="">Selecciona un motivo</option>
+                          <option>Rociado completado</option>
+                          <option>Cambio de boquilla</option>
+                          <option>Falla de equipo</option>
+                        </select>
+                        <p class="help" id="finish-help"></p>
+                      </div>
+                      <button class="btn btn-primary" type="submit">Confirmar</button>
+                    </form>
+                  </article>
+                  <article class="card" id="alert-card" hidden aria-labelledby="alert-title">
+                    <div class="card-head">
+                      <h3 id="alert-title">
+                        Alerta AL-0417 <small class="hint">US08 · US09 · US10</small>
+                      </h3>
+                      <span class="chip chip-warn" id="alert-chip">ALERTA</span>
+                    </div>
+                    <p id="alert-text"></p>
+                    <div class="actions">
+                      <button class="btn btn-primary" type="button" id="diagnosis-btn">
+                        Ver diagnóstico
+                      </button>
+                      <button class="btn btn-secondary" type="button" id="review-btn">
+                        Marcar como revisada
+                      </button>
+                    </div>
+                  </article>
+
+                  <article class="card" id="diagnosis-card" hidden aria-labelledby="diag-title">
+                    <h3 id="diag-title">
+                      Diagnóstico <small class="hint">US13 · US14 · US18</small>
+                    </h3>
+                    <ol class="bars" id="causes"></ol>
+                    <h4>Acción recomendada <span class="chip chip-err">CRÍTICA</span></h4>
+                    <ol class="steps">
+                      <li>Detener alimentación de polvo</li>
+                      <li>Inspeccionar y limpiar boquilla</li>
+                      <li>Verificar presión antes de reanudar</li>
+                    </ol>
+                    <div class="actions">
+                      <button class="btn btn-secondary" type="button" id="notify-btn">
+                        Notificar a mantenimiento
+                      </button>
+                    </div>
+                  </article>
+
+                  <form
+                    class="card form"
+                    id="action-form"
+                    hidden
+                    novalidate
+                    aria-labelledby="action-title"
+                  >
+                    <h3 id="action-title">
+                      Registrar acción <small class="hint">US15 · US16</small>
+                    </h3>
+                    <div class="field">
+                      <label for="action-taken">Acción tomada *</label
+                      ><input id="action-taken" value="Limpieza de boquilla" required />
+                    </div>
+                    <div class="field">
+                      <label for="action-cause">Causa confirmada *</label>
+                      <select id="action-cause" required aria-describedby="cause-help">
+                        <option value="">Selecciona una causa</option>
+                        <option>Obstrucción parcial de boquilla</option>
+                        <option>Variación en suministro de O₂</option>
+                        <option>Desgaste del inyector de polvo</option>
+                      </select>
+                      <p class="help" id="cause-help"></p>
+                    </div>
+                    <label class="check"
+                      ><input type="checkbox" id="action-stopped" /> ¿Se detuvo la sesión?</label
+                    >
+                    <div class="field">
+                      <label for="action-photo">Foto de evidencia (JPG/PNG, máx. 5 MB)</label
+                      ><input
+                        type="file"
+                        id="action-photo"
+                        accept="image/png,image/jpeg"
+                        aria-describedby="photo-help"
+                      />
+                      <p class="help" id="photo-help"></p>
+                      <img id="photo-preview" alt="Vista previa de la foto de evidencia" hidden />
+                    </div>
+                    <button class="btn btn-primary btn-block" type="submit">Confirmar</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <!-- QUALITY -->
+            <div class="tab-panel" role="tabpanel" id="panel-qa" aria-labelledby="tab-qa" hidden>
+              <div class="demo-grid">
+                <div class="demo-col">
+                  <article class="card" aria-labelledby="active-title">
+                    <h3 id="active-title">Sesiones activas <small class="hint">US07</small></h3>
+                    <ul class="list" id="active-list"></ul>
+                  </article>
+                  <article class="card" aria-labelledby="search-title">
+                    <h3 id="search-title">Buscar pieza <small class="hint">US19 · US20</small></h3>
+                    <form class="search-row" id="search-form" role="search">
+                      <label class="sr-only" for="search-input">Buscar por N/S, OF o WO</label>
+                      <input
+                        id="search-input"
+                        class="mono"
+                        placeholder="EB-7734, OF-02541 o WO-01571"
+                      />
+                      <button class="btn btn-primary" type="submit">Buscar</button>
+                    </form>
+                    <div class="filters" role="group" aria-label="Filtros">
+                      <label for="filter-client">Cliente</label
+                      ><select id="filter-client">
+                        <option value="">Todos</option>
+                        <option>Cerro Verde</option>
+                        <option>Las Bambas</option>
+                        <option>Chinalco</option>
+                      </select>
+                      <label for="filter-status">Estado</label
+                      ><select id="filter-status">
+                        <option value="">Todos</option>
+                        <option>COMPLETADA</option>
+                        <option>CON ALERTA</option>
+                      </select>
+                    </div>
+                    <ul class="list" id="search-results" aria-live="polite"></ul>
+                  </article>
+                  <article class="card" aria-labelledby="alerts-hist-title">
+                    <h3 id="alerts-hist-title">
+                      Historial de alertas <small class="hint">US12</small>
+                    </h3>
+                    <label for="alert-param-filter">Parámetro</label>
+                    <select id="alert-param-filter">
+                      <option value="">Todos</option>
+                      <option>Presión de cámara</option>
+                      <option>Temp. de sustrato</option>
+                      <option>Flujo de oxígeno</option>
+                    </select>
+                    <ul class="list" id="alert-history"></ul>
+                  </article>
+                  <form
+                    class="card form"
+                    id="threshold-form"
+                    novalidate
+                    aria-labelledby="thr-title"
+                  >
+                    <h3 id="thr-title">Umbrales de alerta <small class="hint">US11</small></h3>
+                    <div class="field">
+                      <label for="thr-time">Tolerancia para Presión de cámara (s) *</label
+                      ><input
+                        id="thr-time"
+                        type="number"
+                        value="30"
+                        min="5"
+                        max="300"
+                        aria-describedby="thr-help"
+                      />
+                      <p class="help" id="thr-help">Entre 5 y 300 s.</p>
+                    </div>
+                    <div class="field">
+                      <label for="thr-sev">Severidad</label
+                      ><select id="thr-sev">
+                        <option>Informativa</option>
+                        <option selected>Alerta</option>
+                        <option>Crítica</option>
+                      </select>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Guardar umbral</button>
+                  </form>
+                </div>
+                <div class="demo-col">
+                  <article class="card" id="piece-card" hidden aria-labelledby="piece-title">
+                    <h3 id="piece-title">Pieza <small class="hint">US21 · US24</small></h3>
+                    <ol class="timeline" id="piece-timeline"></ol>
+                    <h4>Recuperaciones anteriores</h4>
+                    <ul class="list" id="previous-list"></ul>
+                    <div class="actions">
+                      <button class="btn btn-secondary" type="button" id="open-session-btn">
+                        Ver sesión histórica
+                      </button>
+                    </div>
+                  </article>
+                  <article class="card" id="history-card" hidden aria-labelledby="hist-title">
+                    <h3 id="hist-title">Sesión S-0187 <small class="hint">US22 · US23</small></h3>
+                    <svg
+                      id="history-chart"
+                      viewBox="0 0 320 120"
+                      role="img"
+                      aria-label="Presión de cámara de la sesión frente a la banda de la receta"
+                    ></svg>
+                    <table class="params">
+                      <caption class="sr-only">
+                        Comparación de la sesión frente al PCR
+                      </caption>
+                      <thead>
+                        <tr>
+                          <th scope="col">Parámetro</th>
+                          <th scope="col">Rango</th>
+                          <th scope="col">Prom.</th>
+                          <th scope="col">Estado</th>
+                        </tr>
+                      </thead>
+                      <tbody id="compare-body"></tbody>
+                    </table>
+                  </article>
+                  <form
+                    class="card form"
+                    id="inspection-form"
+                    hidden
+                    novalidate
+                    aria-labelledby="insp-title"
+                  >
+                    <h3 id="insp-title">
+                      Inspección post-proceso <small class="hint">US25</small>
+                    </h3>
+                    <div class="field">
+                      <label for="insp-thickness">Espesor (mm) *</label
+                      ><input
+                        id="insp-thickness"
+                        type="number"
+                        step="0.01"
+                        value="0.30"
+                        aria-describedby="thk-help"
+                      />
+                      <p class="help" id="thk-help">Especificación 0.25 – 0.35 mm.</p>
+                    </div>
+                    <div class="field">
+                      <label for="insp-hardness">Dureza (HV) *</label
+                      ><input
+                        id="insp-hardness"
+                        type="number"
+                        value="1150"
+                        aria-describedby="hv-help"
+                      />
+                      <p class="help" id="hv-help">Mínimo 1 050 HV.</p>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Guardar inspección</button>
+                  </form>
+                  <form
+                    class="card form"
+                    id="report-form"
+                    hidden
+                    novalidate
+                    aria-labelledby="rep-title"
+                  >
+                    <h3 id="rep-title">Generar reporte <small class="hint">US26 · US27</small></h3>
+                    <div class="field">
+                      <label for="rep-reason">Motivo *</label
+                      ><select id="rep-reason" aria-describedby="rep-help">
+                        <option value="">Selecciona un motivo</option>
+                        <option>Reclamo · Cerro Verde</option>
+                        <option>Auditoría interna</option>
+                        <option>Entrega al cliente</option>
+                      </select>
+                      <p class="help" id="rep-help"></p>
+                    </div>
+                    <fieldset>
+                      <legend>Evidencia a incluir</legend>
+                      <label class="check"
+                        ><input
+                          type="checkbox"
+                          name="evidence"
+                          value="Telemetría con banda nominal"
+                          checked
+                        />
+                        Telemetría con banda nominal</label
+                      >
+                      <label class="check"
+                        ><input
+                          type="checkbox"
+                          name="evidence"
+                          value="Comparación frente al PCR"
+                          checked
+                        />
+                        Comparación frente al PCR</label
+                      >
+                      <label class="check"
+                        ><input
+                          type="checkbox"
+                          name="evidence"
+                          value="Alertas y acciones registradas"
+                          checked
+                        />
+                        Alertas y acciones registradas</label
+                      >
+                    </fieldset>
+                    <button class="btn btn-primary" type="submit">Ver vista previa</button>
+                  </form>
+                  <article class="card" id="preview-card" hidden aria-labelledby="prev-title">
+                    <h3 id="prev-title">
+                      Vista previa <small class="hint">US27 · US28 · US29 · US30</small>
+                    </h3>
+                    <div class="doc-preview" id="doc-preview"></div>
+                    <div class="actions">
+                      <button class="btn btn-primary" type="button" id="issue-cert-btn">
+                        Emitir certificado
+                      </button>
+                      <button class="btn btn-secondary" type="button" id="share-btn">
+                        Compartir con el cliente
+                      </button>
+                      <button class="btn btn-secondary" type="button" id="download-btn">
+                        Descargar PDF
+                      </button>
+                    </div>
+                  </article>
+                  <article class="card" aria-labelledby="reports-title">
+                    <h3 id="reports-title">Reportes emitidos <small class="hint">US31</small></h3>
+                    <ul class="list" id="reports-list"></ul>
+                  </article>
+                  <article class="card" aria-labelledby="equip-title">
+                    <h3 id="equip-title">
+                      Equipos, recetas y paradas <small class="hint">US42 · US43 · US44</small>
+                    </h3>
+                    <ul class="list" id="equipment-list"></ul>
+                    <form class="inline-form" id="recipe-form" novalidate>
+                      <p class="muted">PCR-0091 · Presión de cámara (bar)</p>
+                      <div class="row">
+                        <div class="field">
+                          <label for="rcp-min">Mín.</label
+                          ><input id="rcp-min" type="number" step="0.1" value="6.8" />
+                        </div>
+                        <div class="field">
+                          <label for="rcp-max">Máx.</label
+                          ><input id="rcp-max" type="number" step="0.1" value="7.6" />
+                        </div>
+                      </div>
+                      <p class="help" id="rcp-help" aria-live="polite"></p>
+                      <button class="btn btn-secondary" type="submit">
+                        Guardar receta (nueva versión)
+                      </button>
+                    </form>
+                    <ul class="list" id="stops-list"></ul>
+                  </article>
+                </div>
+              </div>
+            </div>
+            <!-- ASSET OWNER -->
+            <div class="tab-panel" role="tabpanel" id="panel-ao" aria-labelledby="tab-ao" hidden>
+              <div class="banner banner-warn" id="eol-banner" role="status">
+                <strong>EB-7734 al 95 % de su vida útil</strong
+                ><small>2 850 h de 3 000 h (PCR). Programa el reemplazo. · US40</small>
+              </div>
+              <div class="demo-grid">
+                <div class="demo-col">
+                  <article class="card" aria-labelledby="comp-title">
+                    <h3 id="comp-title">Mis componentes <small class="hint">US32</small></h3>
+                    <ul class="list" id="component-list"></ul>
+                  </article>
+                  <article class="card" id="component-detail" hidden aria-labelledby="cd-title">
+                    <h3 id="cd-title">Detalle <small class="hint">US33 · US34</small></h3>
+                    <dl class="kv" id="component-kv"></dl>
+                    <div class="meter" aria-hidden="true"><span id="life-bar"></span></div>
+                    <p class="muted" id="life-text"></p>
+                    <div class="actions">
+                      <button class="btn btn-secondary" type="button" id="cert-view-btn">
+                        Ver certificado
+                      </button>
+                    </div>
+                    <div class="doc-preview" id="cert-preview" hidden></div>
+                  </article>
+                  <form class="card form" id="hours-form" novalidate aria-labelledby="hours-title">
+                    <h3 id="hours-title">Registrar horas <small class="hint">US37</small></h3>
+                    <div class="field">
+                      <label for="hours-input">Lectura del horómetro de EB-7734 (h) *</label
+                      ><input
+                        id="hours-input"
+                        type="number"
+                        value="2850"
+                        aria-describedby="hours-help"
+                      />
+                      <p class="help" id="hours-help">Última lectura: 2 610 h.</p>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Guardar lectura</button>
+                  </form>
+                </div>
+                <div class="demo-col">
+                  <article class="card" aria-labelledby="perf-title">
+                    <h3 id="perf-title">
+                      Desempeño vs. PCR y proveedores <small class="hint">US38 · US39</small>
+                    </h3>
+                    <ol class="bars" id="perf-bars"></ol>
+                    <table class="params">
+                      <caption class="sr-only">
+                        Comparación de proveedores
+                      </caption>
+                      <thead>
+                        <tr>
+                          <th scope="col">Proveedor</th>
+                          <th scope="col">Comp.</th>
+                          <th scope="col">Vida media</th>
+                        </tr>
+                      </thead>
+                      <tbody id="supplier-body"></tbody>
+                    </table>
+                  </article>
+                  <form class="card form" id="review-form" novalidate aria-labelledby="rev-title">
+                    <h3 id="rev-title">Solicitar revisión <small class="hint">US35</small></h3>
+                    <div class="field">
+                      <label for="rev-component">Componente *</label
+                      ><select id="rev-component">
+                        <option value="MG-0287">MG-0287 · Manga de desgaste</option>
+                        <option value="EB-7734">EB-7734 · Eje de bomba</option>
+                      </select>
+                    </div>
+                    <div class="field">
+                      <label for="rev-desc">Descripción de la falla *</label
+                      ><textarea id="rev-desc" rows="3" aria-describedby="rev-help"></textarea>
+                      <p class="help" id="rev-help"></p>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Enviar solicitud</button>
+                  </form>
+                  <article class="card" aria-labelledby="req-title">
+                    <h3 id="req-title">Mis solicitudes <small class="hint">US36</small></h3>
+                    <ul class="list" id="request-list"></ul>
+                  </article>
+                  <article class="card" aria-labelledby="shared-title">
+                    <h3 id="shared-title">Reportes compartidos <small class="hint">US56</small></h3>
+                    <ul class="list" id="shared-list"></ul>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- US47 · Plans -->
+      <section class="section section-alt" id="pricing" aria-labelledby="pricing-title">
+        <div class="container">
+          <header class="section-head">
+            <h2 id="pricing-title" data-i18n="pricing.title">Planes según tus equipos</h2>
+            <p data-i18n="pricing.lead">Facturación mensual en USD.</p>
+          </header>
+          <div class="plan-grid">
+            <article class="card plan">
+              <h3 data-i18n="plan.shop">Taller</h3>
+              <p class="price mono">$290<small data-i18n="plan.month">/ mes</small></p>
+              <ul class="check-list">
+                <li data-i18n="plan.shop.1">Hasta 2 equipos HVOF</li>
+                <li data-i18n="plan.shop.2">10 usuarios</li>
+                <li data-i18n="plan.shop.3">Reportes y certificados</li>
+              </ul>
+              <button
+                class="btn btn-secondary btn-block"
+                type="button"
+                data-plan="Taller"
+                data-i18n="plan.choose"
+              >
+                Elegir plan
+              </button>
+            </article>
+            <article class="card plan plan-featured">
+              <p class="badge" data-i18n="plan.recommended">Recomendado</p>
+              <h3 data-i18n="plan.plant">Planta</h3>
+              <p class="price mono">$690<small data-i18n="plan.month">/ mes</small></p>
+              <ul class="check-list">
+                <li data-i18n="plan.plant.1">Hasta 6 equipos HVOF</li>
+                <li data-i18n="plan.plant.2">30 usuarios</li>
+                <li data-i18n="plan.plant.3">Diagnóstico y casos similares</li>
+                <li data-i18n="plan.plant.4">Portal de clientes</li>
+              </ul>
+              <button
+                class="btn btn-primary btn-block"
+                type="button"
+                data-plan="Planta"
+                data-i18n="plan.choose"
+              >
+                Elegir plan
+              </button>
+            </article>
+            <article class="card plan">
+              <h3 data-i18n="plan.ent">Corporativo</h3>
+              <p class="price mono" data-i18n="plan.custom">A medida</p>
+              <ul class="check-list">
+                <li data-i18n="plan.ent.1">Equipos ilimitados</li>
+                <li data-i18n="plan.ent.2">Integración ERP / SSO</li>
+              </ul>
+              <button
+                class="btn btn-secondary btn-block"
+                type="button"
+                data-plan="Corporativo"
+                data-i18n="plan.choose"
+              >
+                Elegir plan
+              </button>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- US51 · Demo request -->
+      <section class="section" id="contact" aria-labelledby="contact-title">
+        <div class="container contact-grid">
+          <div>
+            <h2 id="contact-title" data-i18n="contact.title">Solicita una demo</h2>
+            <p class="lead" data-i18n="contact.lead">
+              Te mostramos EdgeWatch con datos de un taller HVOF real en 30 minutos.
+            </p>
+            <p class="muted" id="selected-plan" aria-live="polite"></p>
+          </div>
+          <form class="card form" id="demo-form" novalidate aria-labelledby="contact-title">
+            <div class="field">
+              <label for="df-name" data-i18n="form.name">Nombre y apellido *</label
+              ><input
+                id="df-name"
+                name="name"
+                autocomplete="name"
+                required
+                aria-describedby="df-name-err"
+              />
+              <p class="help error" id="df-name-err"></p>
+            </div>
+            <div class="field">
+              <label for="df-company" data-i18n="form.company">Empresa *</label
+              ><input
+                id="df-company"
+                name="company"
+                autocomplete="organization"
+                required
+                aria-describedby="df-company-err"
+              />
+              <p class="help error" id="df-company-err"></p>
+            </div>
+            <div class="field">
+              <label for="df-email" data-i18n="form.email">Correo corporativo *</label
+              ><input
+                id="df-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+                aria-describedby="df-email-err"
+              />
+              <p class="help error" id="df-email-err"></p>
+            </div>
+            <fieldset>
+              <legend data-i18n="form.type">Tipo de empresa *</legend>
+              <label
+                ><input type="radio" name="type" value="shop" checked />
+                <span data-i18n="form.shop">Taller de recubrimiento HVOF</span></label
+              >
+              <label
+                ><input type="radio" name="type" value="mine" />
+                <span data-i18n="form.mine">Minera · Asset Owner</span></label
+              >
+            </fieldset>
+            <button class="btn btn-primary btn-block" type="submit" data-i18n="cta.demo">
+              Solicitar demo
+            </button>
+            <p class="form-status" id="demo-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+
+      <!-- US54 · Newsletter -->
+      <section class="newsletter" aria-labelledby="nl-title">
+        <div class="container newsletter-inner">
+          <div>
+            <h2 id="nl-title" data-i18n="nl.title">Novedades de EdgeWatch</h2>
+            <p data-i18n="nl.lead">Casos de uso HVOF y nuevas funciones, una vez al mes.</p>
+          </div>
+          <form class="newsletter-form" id="newsletter-form" novalidate>
+            <label class="sr-only" for="nl-email" data-i18n="form.email"
+              >Correo corporativo *</label
+            >
+            <input
+              id="nl-email"
+              type="email"
+              placeholder="tu@empresa.com"
+              autocomplete="email"
+              aria-describedby="nl-status"
+            />
+            <button class="btn btn-primary" type="submit" data-i18n="nl.cta">Suscribirme</button>
+            <p class="form-status" id="nl-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span class="brand-name">EdgeWatch</span>
+        <p data-i18n="footer.copy">© 2026 InnovaCorp · EdgeWatch. Datos de la demo simulados.</p>
+      </div>
+    </footer>
+    <div class="toast-region" id="toasts" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

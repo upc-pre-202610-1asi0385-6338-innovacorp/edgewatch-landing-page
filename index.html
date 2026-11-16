@@ -277,6 +277,16 @@
               >
                 Calidad
               </button>
+              <button
+                role="tab"
+                id="tab-ao"
+                aria-controls="panel-ao"
+                aria-selected="false"
+                tabindex="-1"
+                data-i18n="demo.ao"
+              >
+                Asset Owner
+              </button>
             </div>
 
             <!-- OPERATOR -->
@@ -736,6 +746,92 @@
                       </button>
                     </form>
                     <ul class="list" id="stops-list"></ul>
+                  </article>
+                </div>
+              </div>
+            </div>
+            <!-- ASSET OWNER -->
+            <div class="tab-panel" role="tabpanel" id="panel-ao" aria-labelledby="tab-ao" hidden>
+              <div class="banner banner-warn" id="eol-banner" role="status">
+                <strong>EB-7734 al 95 % de su vida útil</strong
+                ><small>2 850 h de 3 000 h (PCR). Programa el reemplazo. · US40</small>
+              </div>
+              <div class="demo-grid">
+                <div class="demo-col">
+                  <article class="card" aria-labelledby="comp-title">
+                    <h3 id="comp-title">Mis componentes <small class="hint">US32</small></h3>
+                    <ul class="list" id="component-list"></ul>
+                  </article>
+                  <article class="card" id="component-detail" hidden aria-labelledby="cd-title">
+                    <h3 id="cd-title">Detalle <small class="hint">US33 · US34</small></h3>
+                    <dl class="kv" id="component-kv"></dl>
+                    <div class="meter" aria-hidden="true"><span id="life-bar"></span></div>
+                    <p class="muted" id="life-text"></p>
+                    <div class="actions">
+                      <button class="btn btn-secondary" type="button" id="cert-view-btn">
+                        Ver certificado
+                      </button>
+                    </div>
+                    <div class="doc-preview" id="cert-preview" hidden></div>
+                  </article>
+                  <form class="card form" id="hours-form" novalidate aria-labelledby="hours-title">
+                    <h3 id="hours-title">Registrar horas <small class="hint">US37</small></h3>
+                    <div class="field">
+                      <label for="hours-input">Lectura del horómetro de EB-7734 (h) *</label
+                      ><input
+                        id="hours-input"
+                        type="number"
+                        value="2850"
+                        aria-describedby="hours-help"
+                      />
+                      <p class="help" id="hours-help">Última lectura: 2 610 h.</p>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Guardar lectura</button>
+                  </form>
+                </div>
+                <div class="demo-col">
+                  <article class="card" aria-labelledby="perf-title">
+                    <h3 id="perf-title">
+                      Desempeño vs. PCR y proveedores <small class="hint">US38 · US39</small>
+                    </h3>
+                    <ol class="bars" id="perf-bars"></ol>
+                    <table class="params">
+                      <caption class="sr-only">
+                        Comparación de proveedores
+                      </caption>
+                      <thead>
+                        <tr>
+                          <th scope="col">Proveedor</th>
+                          <th scope="col">Comp.</th>
+                          <th scope="col">Vida media</th>
+                        </tr>
+                      </thead>
+                      <tbody id="supplier-body"></tbody>
+                    </table>
+                  </article>
+                  <form class="card form" id="review-form" novalidate aria-labelledby="rev-title">
+                    <h3 id="rev-title">Solicitar revisión <small class="hint">US35</small></h3>
+                    <div class="field">
+                      <label for="rev-component">Componente *</label
+                      ><select id="rev-component">
+                        <option value="MG-0287">MG-0287 · Manga de desgaste</option>
+                        <option value="EB-7734">EB-7734 · Eje de bomba</option>
+                      </select>
+                    </div>
+                    <div class="field">
+                      <label for="rev-desc">Descripción de la falla *</label
+                      ><textarea id="rev-desc" rows="3" aria-describedby="rev-help"></textarea>
+                      <p class="help" id="rev-help"></p>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Enviar solicitud</button>
+                  </form>
+                  <article class="card" aria-labelledby="req-title">
+                    <h3 id="req-title">Mis solicitudes <small class="hint">US36</small></h3>
+                    <ul class="list" id="request-list"></ul>
+                  </article>
+                  <article class="card" aria-labelledby="shared-title">
+                    <h3 id="shared-title">Reportes compartidos <small class="hint">US56</small></h3>
+                    <ul class="list" id="shared-list"></ul>
                   </article>
                 </div>
               </div>

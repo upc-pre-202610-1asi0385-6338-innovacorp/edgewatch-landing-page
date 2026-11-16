@@ -1021,3 +1021,133 @@ $('#recipe-form').addEventListener('submit', (e) => {
     true,
   );
 });
+
+// ==========================================================
+// DEMO: ASSET OWNER (US32-US40, US56)
+// ==========================================================
+/* ---------- Asset Owner: US32 · US33 · US34 · US35 · US36 · US37 · US38 · US39 · US40 · US56 ---------- */
+const lifeStatus = (c) => {
+  const r = c.hours / c.pcr;
+  return r >= 1 ? 'VENCIDO' : r >= 0.9 ? 'PRÓXIMO' : 'EN RANGO';
+};
+function renderComponents() {
+  $('#component-list').innerHTML = demoData.components
+    .map(
+      (c) =>
+        `<li><span><b class="mono">${c.sn}</b><span class="meta">${c.name} · ${c.supplier} · ${c.hours.toLocaleString('es-PE')} h</span></span><span>${chip(lifeStatus(c))} <button class="link" type="button" data-comp="${c.sn}">Ver</button></span></li>`,
+    )
+    .join('');
+  $$('[data-comp]').forEach((b) =>
+    b.addEventListener('click', () => openComponent(b.dataset.comp)),
+  );
+  const eb = demoData.components[0],
+    pct = Math.round((eb.hours / eb.pcr) * 100);
+  $('#eol-banner').hidden = pct < 90;
+  $('#eol-banner').innerHTML =
+    `<strong>${eb.sn} al ${pct} % de su vida útil</strong><small>${eb.hours.toLocaleString('es-PE')} h de ${eb.pcr.toLocaleString('es-PE')} h (PCR). Programa el reemplazo. · US40</small>`;
+  renderPerformance();
+}
+let currentComponent = null;
+function openComponent(sn) {
+  const c = demoData.components.find((x) => x.sn === sn);
+  currentComponent = c;
+  const pct = Math.round((c.hours / c.pcr) * 100);
+  $('#cd-title').innerHTML = `${c.name} · ${c.sn} <small class="hint">US33 · US34</small>`;
+  $('#component-kv').innerHTML = [
+    ['Recubrimiento', c.coating],
+    ['Proveedor', c.supplier],
+    ['Horas', `${c.hours} h`],
+    ['Vida esperada (PCR)', `${c.pcr} h`],
+    ['Certificado', c.cert || 'No disponible'],
+  ]
+    .map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`)
+    .join('');
+  $('#life-bar').style.width = Math.min(pct, 100) + '%';
+  $('#life-text').textContent = `${pct} % de la vida esperada`;
+  $('#cert-preview').hidden = true;
+  $('#component-detail').hidden = false;
+}
+$('#cert-view-btn').addEventListener('click', () => {
+  const c = currentComponent,
+    box = $('#cert-preview');
+  box.innerHTML = c.cert
+    ? `<h4>Certificado de aplicación ${c.cert}</h4><dl class="kv"><dt>Componente</dt><dd>${c.sn}</dd><dt>Recubrimiento</dt><dd>${c.coating}</dd><dt>Espesor</dt><dd>0.30 mm</dd><dt>Dureza</dt><dd>1 150 HV</dd><dt>Parámetros</dt><dd>5/5 en rango</dd></dl>`
+    : `<p>El certificado aún no está disponible. ${c.supplier} todavía no lo emite.</p>`;
+  box.hidden = false;
+});
+$('#hours-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const input = $('#hours-input'),
+    v = Number(input.value);
+  if (!(v > state.lastHours)) {
+    setFieldState(
+      input,
+      $('#hours-help'),
+      `La lectura no puede ser menor que la anterior (${state.lastHours} h).`,
+    );
+    return;
+  }
+  state.lastHours = v;
+  demoData.components[0].hours = v;
+  setFieldState(input, $('#hours-help'), `Lectura guardada: ${v} h.`, true);
+  renderComponents();
+});
+function renderPerformance() {
+  $('#perf-bars').innerHTML = demoData.components
+    .map((c) => {
+      const pct = Math.round((c.hours / c.pcr) * 100);
+      return `<li><div class="bar-label"><span>${c.sn} · ${c.supplier}</span><span class="mono">${pct} %</span></div><div class="track"><span class="${pct >= 100 ? 'over' : ''}" style="width:${Math.min(pct, 100)}%"></span></div></li>`;
+    })
+    .join('');
+  const by = {};
+  demoData.components.forEach((c) => {
+    (by[c.supplier] = by[c.supplier] || []).push(c.hours / c.pcr);
+  });
+  $('#supplier-body').innerHTML = Object.entries(by)
+    .map(
+      ([s, arr]) =>
+        `<tr><th scope="row">${s}</th><td class="mono">${arr.length}</td><td class="mono">${Math.round((arr.reduce((a, b) => a + b, 0) / arr.length) * 100)} %</td></tr>`,
+    )
+    .join('');
+}
+function renderRequests() {
+  $('#request-list').innerHTML = state.requests
+    .map(
+      ([id, d, s]) =>
+        `<li><span><b class="mono">${id}</b><span class="meta">${d}</span></span>${chip(s)}</li>`,
+    )
+    .join('');
+}
+$('#review-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const desc = $('#rev-desc');
+  if (desc.value.trim().length < 15) {
+    setFieldState(desc, $('#rev-help'), 'Describe la falla (mínimo 15 caracteres).');
+    return;
+  }
+  setFieldState(desc, $('#rev-help'), '');
+  const id = 'SR-00' + (19 + state.requests.length);
+  state.requests.unshift([id, `${$('#rev-component').value} · enviada hoy`, 'ENVIADA']);
+  renderRequests();
+  showToast(`Solicitud ${id} enviada al proveedor. Respuesta estimada en 3 días hábiles.`, 'ok');
+  setTimeout(() => {
+    state.requests[0][2] = 'EN REVISIÓN';
+    renderRequests();
+  }, 4000);
+  e.target.reset();
+});
+function renderShared() {
+  $('#shared-list').innerHTML = state.shared
+    .map(
+      ([id, d, s]) =>
+        `<li><span><b class="mono">${id}</b><span class="meta">${d}</span></span>${chip(s)}</li>`,
+    )
+    .join('');
+}
+
+// Reports shared by the supplier from the quality demo (US29 -> US56)
+document.addEventListener('edgewatch:report-shared', renderShared);
+
+renderComponents();
+renderRequests();
+renderShared();

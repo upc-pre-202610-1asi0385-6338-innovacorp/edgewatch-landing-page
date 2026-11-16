@@ -1054,6 +1054,53 @@ fieldset {
 }
 
 /* ==========================================================
+   DEMO: ASSET OWNER
+   ========================================================== */
+.bars {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+  display: grid;
+  gap: 12px;
+}
+.bars .bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+.bars .track {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--neutral-bg);
+  overflow: hidden;
+  margin-top: 6px;
+}
+.bars .track span {
+  display: block;
+  height: 100%;
+  background: var(--teal);
+}
+.bars .track span.over {
+  background: var(--ok);
+}
+.bars .track span.under {
+  background: var(--err);
+}
+.meter {
+  height: 10px;
+  border-radius: 5px;
+  background: var(--neutral-bg);
+  overflow: hidden;
+  margin-top: 12px;
+}
+.meter span {
+  display: block;
+  height: 100%;
+  background: var(--amber);
+}
+
+/* ==========================================================
    RESPONSIVE: TABLET AND PHONE (US53) · ALWAYS AT THE END
    ========================================================== */
 @media (max-width: 1024px) {

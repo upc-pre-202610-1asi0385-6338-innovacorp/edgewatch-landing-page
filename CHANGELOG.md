@@ -3,6 +3,19 @@
 All notable changes to this project are documented in this file, following
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/).
 
+## [1.1.0] - 2026-11-15
+
+### Changed
+
+- Project organized into `public/` with `assets/styles`, `assets/scripts` and `assets/images`.
+- Stylesheet renamed to `styles.css` and script to `main.js`.
+- README with project information, authors, target segments and main features.
+
+### Added
+
+- `favicon.ico` in `public/`.
+- Root `index.html` that redirects GitHub Pages to `public/`.
+
 ## [1.0.0] - 2026-11-15
 
 ### Added

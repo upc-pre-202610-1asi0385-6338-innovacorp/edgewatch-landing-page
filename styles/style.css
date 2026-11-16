@@ -693,6 +693,110 @@ fieldset {
 }
 
 /* ==========================================================
+   PLANS (US47)
+   ========================================================== */
+.plan-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+.plan {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.plan .check-list {
+  flex: 1;
+}
+.plan-featured {
+  border: 2px solid var(--amber);
+}
+.badge {
+  align-self: flex-start;
+  background: var(--amber);
+  color: var(--navy-dark);
+  font: 600 0.6875rem var(--font-body);
+  padding: 2px 10px;
+  border-radius: 10px;
+  margin: 0;
+  text-transform: uppercase;
+}
+.price {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+.price small {
+  font-size: 0.875rem;
+  color: var(--text-2);
+  font-weight: 500;
+}
+
+/* ==========================================================
+   DEMO REQUEST (US51)
+   ========================================================== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.form-status {
+  margin: 0;
+  font-weight: 600;
+}
+.form-status.ok {
+  color: var(--ok-text);
+}
+.form-status.err {
+  color: var(--err-text);
+}
+
+/* ==========================================================
+   NEWSLETTER (US54)
+   ========================================================== */
+.newsletter {
+  background: var(--navy);
+  color: #fff;
+  padding: 56px 0;
+}
+.newsletter h2 {
+  color: #fff;
+}
+.newsletter p {
+  color: #b9c7db;
+}
+.newsletter-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.newsletter-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  max-width: 520px;
+  flex: 1;
+}
+.newsletter-form input {
+  flex: 1;
+  min-width: 220px;
+  border-radius: 24px;
+}
+.newsletter-form .form-status {
+  flex-basis: 100%;
+}
+.newsletter .form-status.ok {
+  color: #9be3b0;
+}
+.newsletter .form-status.err {
+  color: #ffb4b4;
+}
+
+/* ==========================================================
    RESPONSIVE: TABLET AND PHONE (US53) · ALWAYS AT THE END
    ========================================================== */
 @media (max-width: 1024px) {

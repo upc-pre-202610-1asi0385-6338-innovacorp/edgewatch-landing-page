@@ -238,3 +238,72 @@ $$('[data-tabs]').forEach((tabs) => {
     });
   });
 });
+
+// ==========================================================
+// PLANS (US47)
+// ==========================================================
+$$('[data-plan]').forEach((b) =>
+  b.addEventListener('click', () => {
+    $('#selected-plan').textContent = i18n.t('plan') + b.dataset.plan;
+    $('#contact').scrollIntoView();
+    $('#df-name').focus({ preventScroll: true });
+  }),
+);
+
+// ==========================================================
+// DEMO REQUEST FORM (US51)
+// ==========================================================
+const FREE_DOMAINS = /@(gmail|hotmail|outlook|yahoo)\./i;
+$('#demo-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  let valid = true;
+  [
+    ['#df-name', '#df-name-err'],
+    ['#df-company', '#df-company-err'],
+  ].forEach(([i, h]) => {
+    const empty = !$(i).value.trim();
+    setFieldState($(i), $(h), empty ? i18n.t('required') : '');
+    if (empty) valid = false;
+  });
+  const email = $('#df-email');
+  const emailOk = email.checkValidity() && email.value && !FREE_DOMAINS.test(email.value);
+  setFieldState(email, $('#df-email-err'), emailOk ? '' : i18n.t('email'));
+  if (!emailOk) valid = false;
+  const status = $('#demo-status');
+  if (!valid) {
+    status.textContent = '';
+    $('#demo-form .is-invalid').focus();
+    return;
+  }
+  status.textContent = i18n.t('demoOk');
+  status.className = 'form-status ok';
+  e.target.reset();
+  $$('#demo-form input').forEach((i) => i.classList.remove('is-valid'));
+});
+
+// ==========================================================
+// NEWSLETTER (US54)
+// ==========================================================
+const subscribers = new Set();
+$('#newsletter-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const input = $('#nl-email');
+  const status = $('#nl-status');
+  const value = input.value.trim().toLowerCase();
+  if (!input.checkValidity() || !value) {
+    status.textContent = i18n.t('email');
+    status.className = 'form-status err';
+    input.setAttribute('aria-invalid', 'true');
+    return;
+  }
+  input.removeAttribute('aria-invalid');
+  if (subscribers.has(value)) {
+    status.textContent = i18n.t('nlDup');
+    status.className = 'form-status err';
+    return;
+  }
+  subscribers.add(value);
+  status.textContent = i18n.t('nlOk');
+  status.className = 'form-status ok';
+  input.value = '';
+});

@@ -808,3 +808,216 @@ $('#action-form').addEventListener('submit', (e) => {
   e.target.hidden = true;
   $('#diagnosis-card').hidden = true;
 });
+
+// ==========================================================
+// DEMO: QUALITY (US07, US11, US12, US19-US31, US42-US44)
+// ==========================================================
+/* ---------- Quality: US07 · US11 · US12 · US19 · US20 · US21 · US22 · US23 · US24 · US25 ---------- */
+$('#active-list').innerHTML = demoData.activeSessions
+  .map(
+    (s) =>
+      `<li><span><b class="mono">${s.of}</b><span class="meta">${s.detail}</span></span>${chip(s.status)}</li>`,
+  )
+  .join('');
+
+function renderAlertHistory() {
+  const f = $('#alert-param-filter').value;
+  const rows = demoData.alertHistory.filter((a) => !f || a[1] === f);
+  $('#alert-history').innerHTML = rows.length
+    ? rows
+        .map(
+          ([id, p, d, s]) =>
+            `<li><span><b class="mono">${id}</b><span class="meta">${p} · ${d}</span></span>${chip(s)}</li>`,
+        )
+        .join('')
+    : `<li>Sin alertas para este filtro.</li>`;
+}
+$('#alert-param-filter').addEventListener('change', renderAlertHistory);
+renderAlertHistory();
+
+$('#threshold-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const input = $('#thr-time'),
+    v = Number(input.value);
+  if (!(v >= 5 && v <= 300)) {
+    setFieldState(input, $('#thr-help'), 'Ingresa un valor entre 5 y 300 s.');
+    return;
+  }
+  state.toleranceSeconds = v;
+  setFieldState(input, $('#thr-help'), `Umbral guardado: ${v} s · ${$('#thr-sev').value}`, true);
+});
+
+function renderSearch() {
+  const q = $('#search-input').value.trim().toUpperCase(),
+    client = $('#filter-client').value,
+    status = $('#filter-status').value;
+  const res = demoData.pieces.filter(
+    (p) =>
+      (!q || [p.sn, p.of, p.wo].some((x) => x.includes(q))) &&
+      (!client || p.client === client) &&
+      (!status || p.status === status),
+  );
+  $('#search-results').innerHTML = res.length
+    ? res
+        .map(
+          (p) =>
+            `<li><span><b class="mono">${p.name} · ${p.sn}</b><span class="meta">${p.client} · ${p.of} · ${p.wo}</span></span><button class="link" type="button" data-piece="${p.sn}">Ver</button></li>`,
+        )
+        .join('')
+    : `<li>No encontramos «${q}». Revisa el código o quita filtros.</li>`;
+  $$('[data-piece]').forEach((b) => b.addEventListener('click', () => openPiece(b.dataset.piece)));
+}
+$('#search-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  renderSearch();
+});
+$('#filter-client').addEventListener('change', renderSearch);
+$('#filter-status').addEventListener('change', renderSearch);
+
+function openPiece(sn) {
+  const p = demoData.pieces.find((x) => x.sn === sn);
+  state.selectedPiece = p;
+  $('#piece-title').innerHTML = `${p.name} · ${p.sn} <small class="hint">US21 · US24</small>`;
+  $('#piece-timeline').innerHTML = p.timeline
+    .map(
+      ([t, s, st, d]) =>
+        `<li class="${st}"><b>${t}</b> <span class="mono">${d}</span><small>${s}</small></li>`,
+    )
+    .join('');
+  $('#previous-list').innerHTML = p.previous.length
+    ? p.previous
+        .map(
+          ([a, b]) =>
+            `<li><span><b class="mono">${a}</b><span class="meta">${b}</span></span>${chip('COMPLETADA')}</li>`,
+        )
+        .join('')
+    : `<li>Primera recuperación de este componente.</li>`;
+  $('#piece-card').hidden = false;
+  $('#inspection-form').hidden = false;
+  $('#report-form').hidden = false;
+  $('#piece-card').scrollIntoView({ block: 'nearest' });
+}
+$('#open-session-btn').addEventListener('click', () => {
+  const vals = [7.2, 7.25, 7.3, 7.4, 7.7, 7.5, 7.3, 7.2, 7.15, 7.2, 7.25, 7.2];
+  drawChart($('#history-chart'), vals, 6.4, 8.0, 6.8, 7.6);
+  $('#compare-body').innerHTML = demoData.compare
+    .map(
+      ([n, r, a]) =>
+        `<tr><th scope="row">${n}</th><td class="mono">${r}</td><td class="mono">${a}</td><td>${chip('EN RANGO')}</td></tr>`,
+    )
+    .join('');
+  $('#history-card').hidden = false;
+});
+
+$('#inspection-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const t = $('#insp-thickness'),
+    h = $('#insp-hardness');
+  const tOk = Number(t.value) >= 0.25 && Number(t.value) <= 0.35,
+    hOk = Number(h.value) >= 1050;
+  setFieldState(
+    t,
+    $('#thk-help'),
+    tOk
+      ? 'Dentro de especificación'
+      : 'Fuera de especificación (0.25 – 0.35 mm). La pieza queda no conforme.',
+    tOk,
+  );
+  setFieldState(
+    h,
+    $('#hv-help'),
+    hOk ? 'Dentro de especificación' : 'Bajo el mínimo de 1 050 HV.',
+    hOk,
+  );
+  state.selectedPiece.inspected = tOk && hOk;
+  showToast(
+    tOk && hOk
+      ? 'Inspección registrada · pieza conforme.'
+      : 'Inspección registrada · pieza NO conforme: el certificado queda bloqueado.',
+    tOk && hOk ? 'ok' : 'warn',
+  );
+});
+
+/* ---------- Quality: US26 · US27 · US28 · US29 · US30 · US31 ---------- */
+function renderReports() {
+  $('#reports-list').innerHTML = state.reports
+    .map(
+      ([id, d, s]) =>
+        `<li><span><b class="mono">${id}</b><span class="meta">${d}</span></span>${chip(s)}</li>`,
+    )
+    .join('');
+}
+renderReports();
+$('#report-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const reason = $('#rep-reason'),
+    ev = $$("input[name='evidence']:checked").map((x) => x.value);
+  if (!reason.value) {
+    setFieldState(reason, $('#rep-help'), 'Elige el motivo del reporte.');
+    return;
+  }
+  if (!ev.length) {
+    setFieldState(reason, $('#rep-help'), 'Selecciona al menos una evidencia.');
+    return;
+  }
+  setFieldState(reason, $('#rep-help'), '');
+  const p = state.selectedPiece;
+  $('#doc-preview').innerHTML =
+    `<h4>Reporte técnico RT-0215 · ${p.of}</h4><dl class="kv"><dt>Pieza</dt><dd>${p.sn}</dd><dt>Cliente</dt><dd>${p.client}</dd><dt>Motivo</dt><dd>${reason.value}</dd><dt>Comparación PCR</dt><dd>5/5 en rango</dd></dl><p class="muted">Incluye: ${ev.join(', ')}.</p><p class="muted">Estado: BORRADOR · generado por Carlos V.</p>`;
+  $('#preview-card').hidden = false;
+});
+$('#issue-cert-btn').addEventListener('click', () => {
+  const p = state.selectedPiece;
+  if (!p.inspected) {
+    showToast(
+      `No se puede emitir el certificado de ${p.sn}: falta una inspección post-proceso conforme.`,
+    );
+    return;
+  }
+  state.reports.unshift(['CE-0342', `Certificado · ${p.of} · ${p.client}`, 'EMITIDO']);
+  renderReports();
+  showToast(`Certificado CE-0342 emitido para ${p.sn}.`, 'ok');
+});
+$('#share-btn').addEventListener('click', () => {
+  const p = state.selectedPiece;
+  state.reports.unshift(['RT-0215', `Reporte técnico · ${p.of} · ${p.client}`, 'COMPARTIDO']);
+  renderReports();
+  state.shared.unshift(['RT-0215', `${p.sn} · Reporte técnico · hoy`, 'COMPARTIDO']);
+  document.dispatchEvent(new CustomEvent('edgewatch:report-shared'));
+  showToast(`RT-0215 compartido con el contacto de ${p.client}. Lo verá en su portal.`, 'ok');
+});
+$('#download-btn').addEventListener('click', () => {
+  const prev = $('#doc-preview');
+  prev.classList.add('print-target');
+  window.print();
+  prev.classList.remove('print-target');
+});
+
+/* ---------- Quality: US42 · US43 · US44 ---------- */
+$('#equipment-list').innerHTML = demoData.equipment
+  .map(([n, d, s]) => `<li><span><b>${n}</b><span class="meta">${d}</span></span>${chip(s)}</li>`)
+  .join('');
+$('#stops-list').innerHTML = demoData.stops
+  .map(
+    ([a, b]) =>
+      `<li><span><b class="mono">${a}</b><span class="meta">${b}</span></span>${chip('RESUELTA')}</li>`,
+  )
+  .join('');
+$('#recipe-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const min = Number($('#rcp-min').value),
+    max = Number($('#rcp-max').value),
+    help = $('#rcp-help');
+  if (!(min < max)) {
+    setFieldState($('#rcp-min'), help, 'El mínimo debe ser menor que el máximo.');
+    return;
+  }
+  state.pressureRange = [min, max];
+  state.recipeVersion += 1;
+  setFieldState(
+    $('#rcp-min'),
+    help,
+    `PCR-0091 guardada como v${state.recipeVersion}: ${min} – ${max} bar. Se aplica a la sesión en vivo.`,
+    true,
+  );
+});
